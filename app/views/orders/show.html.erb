@@ -16,6 +16,20 @@
       <tbody>
         <%= render @order.line_items %>
       </tbody>
+      <tfoot>
+        <tr>
+          <th>
+            Email
+          </th>
+          <th>
+            <%= @order.email %>
+          </th>
+          <th>
+            TOTAL
+          </th>
+          <th>
+            <%= humanized_money_with_symbol @order.total_cents / 100.0%>
+      </tfoot>
     </table>
   </div>
 
