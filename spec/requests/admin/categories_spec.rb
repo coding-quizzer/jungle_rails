@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Admin::Articles", type: :request do
+RSpec.describe "Admin::Categories", type: :request do
   describe "GET /index" do
     it "returns http success" do
-      get "/admin/articles/index"
+      get "/admin/categories/index"
       expect(response).to have_http_status(:success)
     end
   end
