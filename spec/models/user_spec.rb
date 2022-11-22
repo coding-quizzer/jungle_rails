@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include "Last name is required"
     end
 
-    it 'should not allow users to register without a valid last name' do
+    it 'should not allow users to register without a valid email' do
       @user = User.create(first_name: "Bob", last_name: "Smith", password: "whereami", password_confirmation: "whereami")
       expect(@user.errors.full_messages).to include "Email is required"
     end
