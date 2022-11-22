@@ -12,10 +12,17 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password"
     end
     
-    it 'should not allow users to register with an already existing password' do
+    it 'should not allow users to register with an already existing email' do
       User.create!(name: "Robert", email: "robby@gmail.com", password: "whereami", password: "whereami")
-      @new_user = User.new(name: "Bob", email: "robby@gmail.com", password: "howisit", password_confirmation: "howisit")
-      expect(@new_user.save).to be false
+      @new_user = User.create(name: "Bob", email: "robby@gmail.com", password: "howisit", password_confirmation: "howisit")
+      expect(@new_user.errors.full_messages).to include "Email has already been taken"
+    end
+
+    it 'should not allow users to register with an already existing email' do
+      User.create!(name: "Robert", email: "RoBBy@gmail.com", password: "whereami", password: "whereami")
+      @new_user = User.create(name: "Bob", email: "robby@gmail.com", password: "howisit", password_confirmation: "howisit")
+      expect(@new_user.errors.full_messages).to include "Email has already been taken"
     end
   end
+
 end
