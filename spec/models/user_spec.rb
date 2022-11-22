@@ -26,17 +26,17 @@ RSpec.describe User, type: :model do
 
     it 'should not allow users to register without a valid first name' do
       @user = User.create(last_name: "Smith", email: "robby@gmail.com", password: "whereami", password_confirmation: "whereami")
-      expect(@user.errors.full_messages).to include "First name is required"
+      expect(@user.errors.full_messages).to include "First name can't be blank"
     end
 
     it 'should not allow users to register without a valid last name' do
       @user = User.create(first_name: "Bob", email: "robby@gmail.com", password: "whereami", password_confirmation: "whereami")
-      expect(@user.errors.full_messages).to include "Last name is required"
+      expect(@user.errors.full_messages).to include "Last name can't be blank"
     end
 
     it 'should not allow users to register without a valid email' do
       @user = User.create(first_name: "Bob", last_name: "Smith", password: "whereami", password_confirmation: "whereami")
-      expect(@user.errors.full_messages).to include "Email is required"
+      expect(@user.errors.full_messages).to include "Email can't be blank"
     end
   end
 
