@@ -48,17 +48,28 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate_with_credentials' do
     before(:each) do
-      @user_account = User.create!(first_name: "Henry", last_name: "Smith", email: "henry@gmail.com", password: "whereami", password_confirmation: "whereami")
+      @user_account = User.create!(first_name: "Henry", last_name: "Smith", email: "henry@Gmail.com", password: "whereami", password_confirmation: "whereami")
     end
       it 'should return user instance if user is successfully logged in' do
-      user = User.authenticate_with_credentials('henry@gmail.com', "whereami")
+      user = User.authenticate_with_credentials('henry@Gmail.com', "whereami")
       expect(user).to eq @user_account
     end
 
     it 'should return nil if user is not successfully logged in' do
-      user = User.authenticate_with_credentials('henry@gmail.com', "whoami")
+      user = User.authenticate_with_credentials('henry@Gmail.com', "whoami")
       expect(user).to be nil
     end
+
+    it 'should ignore padding around email address' do
+      user = User.authenticate_with_credentials(' henry@Gmail.com ', "whereami")
+      expect(user).to eq @user_account
+    end
+
+    it 'should ignore padding around email address' do
+      user = User.authenticate_with_credentials('HenRy@GMail.com', "whereami")
+      expect(user).to eq @user_account
+    end
+
   end
 
 end

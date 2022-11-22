@@ -6,7 +6,8 @@ class User < ApplicationRecord
   has_secure_password
 
   def self.authenticate_with_credentials(email, password)
-    user = self.find_by_email email
+    stripped_email = email.strip.downcase
+    user = self.where("LOWER(email) = ?", stripped_email).first
     return nil unless user && user.authenticate(password)
     user
   end
