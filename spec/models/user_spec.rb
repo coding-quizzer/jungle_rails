@@ -47,15 +47,17 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    user_account = User.create!(first_name: "Henry", last_name: "Smith", email: "henry@gmail.com", password: "whereami", password_confirmation: "whereami")
-    it 'should return user instance if user is successfully logged in' do
+    before(:each) do
+      @user_account = User.create!(first_name: "Henry", last_name: "Smith", email: "henry@gmail.com", password: "whereami", password_confirmation: "whereami")
+    end
+      it 'should return user instance if user is successfully logged in' do
       user = User.authenticate_with_credentials('henry@gmail.com', "whereami")
-      expect (user).to be user_account
+      expect(user).to eq @user_account
     end
 
     it 'should return nil if user is not successfully logged in' do
       user = User.authenticate_with_credentials('henry@gmail.com', "whoami")
-      expect (user).to be nil
+      expect(user).to be nil
     end
   end
 
