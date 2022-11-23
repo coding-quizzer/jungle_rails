@@ -7,7 +7,7 @@ describe('jungle home page', () => {
 
   it('There are products on the page', () => {
 
-    cy.get('.products article').should('be.be.visible');
+    cy.get('.products article').should('be.visible');
     
   });
 
