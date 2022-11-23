@@ -10,6 +10,21 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  helper_method :user_full_name
+  def user_full_name
+    @user_full_name ||= current_user && "#{current_user.first_name} #{current_user.last_name}" 
+  end
+
+  helper_method :displayed_user_name
+  def displayed_user_name
+    @displayed_user_name = user_full_name || "Khurram Virani"
+  end
+
+  helper_method :displayed_user_email
+  def displayed_user_email
+    @displayed_user_email = (current_user && current_user.email) || 'kvirani@gmail.com'
+  end
+
   def cart
     @cart ||= cookies[:cart].present? ? JSON.parse(cookies[:cart]) : {}
   end
