@@ -2,6 +2,15 @@
 
 A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example. Jungle allows users to buy plants, which are arranged by category.
 
+## Screenshots
+![Screenshot of Admin Dashboard](https://github.com/coding-quizzer/jungle_rails/blob/feature/fill-in-readme/docs/admin_dashboard.png?raw=true)
+
+![Screenshot of Home Page](https://github.com/coding-quizzer/jungle_rails/blob/feature/fill-in-readme/docs/home_page.png?raw=true)
+
+![Screenshot of Shrubs Category Page](https://github.com/coding-quizzer/jungle_rails/blob/feature/fill-in-readme/docs/category_page.png?raw=true)
+
+![Screenshot of Swamp Root Product Page](https://github.com/coding-quizzer/jungle_rails/blob/feature/fill-in-readme/docs/product_page.png?raw=true)
+
 ## Setup
 
 1. Run `bundle install` to install dependencies
