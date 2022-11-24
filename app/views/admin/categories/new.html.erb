@@ -8,10 +8,9 @@
     <%= link_to 'All Categories', [:admin, :categories], class: 'btn btn-info' %>
   </div>
 
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-1">
+  <div class="row gy-3">
       <%= form_for [:admin, @category] do |form| %>
-
+        <div class="col-sm-6 col-sm-offset-1">
         <% if form.object.errors.any? %>
           <div class="alert alert-danger">
             <strong>The following errors prevented saving:</strong>
@@ -21,15 +20,15 @@
               <% end %>
             </ul>
           </div>
+        </div>
         <% end %>
 
         <div class="form-group">
           <%= form.label :name %>
           <%= form.text_field :name, class: 'form-control' %>
         </div>
-
+        
         <%= form.submit 'Create Product', class: 'btn btn-primary' %>
       <% end %>
-    </div>
   </div>
 </section>
